@@ -1,1 +1,176 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Foisal Mart</title></head><body><script>window.location.replace("https://claude.ai/public/artifacts/aa84bfbb-c6e0-4083-901f-bda22323cb43")</script></body></html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foisal Mart</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#ff6b00;--primary-dark:#cc5500;--secondary:#1a1a2e;--accent:#ffd700;--bg:#f5f5f0;--card:#fff;--text:#1a1a2e;--text-light:#666;--success:#22c55e;--danger:#ef4444;--shadow:0 4px 24px rgba(0,0,0,.10);--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--text)}
+nav{background:var(--secondary);color:#fff;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.18)}
+.nav-logo{font-family:'Poppins',sans-serif;font-weight:900;font-size:1.5rem;color:var(--primary)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:6px}
+.nav-btn{background:none;border:none;color:#fff;font-size:.95rem;font-family:'Hind Siliguri',sans-serif;padding:8px 14px;border-radius:10px;cursor:pointer;transition:background .2s}
+.nav-btn:hover,.nav-btn.active{background:var(--primary)}
+.cart-btn{background:var(--primary);border:none;color:#fff;padding:8px 18px;border-radius:10px;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-size:1rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:background .2s}
+.cart-btn:hover{background:var(--primary-dark)}
+.cart-count{background:var(--accent);color:var(--secondary);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.page{display:none}.page.active{display:block}
+.hero{position:relative;overflow:hidden;min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-color:var(--secondary)}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.hero-content{position:relative;z-index:2;color:#fff}
+.hero-content h1{font-family:'Poppins',sans-serif;font-size:2.4rem;font-weight:900;line-height:1.15}
+.hero-content h1 span{color:var(--accent)}
+.hero-content p{color:#ddd;margin:14px 0 28px;font-size:1.1rem}
+.hero-btn{background:var(--primary);color:#fff;border:none;padding:14px 36px;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;transition:transform .15s,background .2s}
+.hero-btn:hover{background:var(--primary-dark);transform:scale(1.04)}
+.shop-controls{padding:22px 20px 0;display:flex;gap:12px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+.search-box{flex:1;min-width:200px;padding:12px 18px;border-radius:12px;border:2px solid #e0e0e0;font-size:1rem;font-family:'Hind Siliguri',sans-serif;outline:none;transition:border .2s}
+.search-box:focus{border-color:var(--primary)}
+.filter-btn{padding:10px 18px;border-radius:10px;border:2px solid #e0e0e0;background:#fff;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-size:.95rem;transition:all .15s}
+.filter-btn.active,.filter-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;padding:22px 20px;max-width:1100px;margin:0 auto}
+.product-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;position:relative}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 10px 32px rgba(255,107,0,.13)}
+.product-img-wrap{width:100%;height:180px;overflow:hidden;background:#f0e6d3;display:flex;align-items:center;justify-content:center}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover}
+.product-img-wrap .emoji-img{font-size:4rem}
+.product-badge{position:absolute;top:12px;left:12px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:20px}
+.product-info{padding:14px 16px 16px}
+.product-name{font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.product-cat{color:var(--text-light);font-size:.85rem;margin-bottom:8px}
+.product-price{color:var(--primary);font-weight:800;font-size:1.2rem}
+.old-price{color:#aaa;font-size:.88rem;font-weight:400;text-decoration:line-through;margin-left:6px}
+.add-to-cart{width:100%;margin-top:12px;padding:10px;background:var(--secondary);color:#fff;border:none;border-radius:10px;font-size:.98rem;font-weight:600;cursor:pointer;font-family:'Hind Siliguri',sans-serif;transition:background .2s}
+.add-to-cart:hover{background:var(--primary)}
+.cart-container{max-width:700px;margin:0 auto;padding:28px 18px}
+.cart-title{font-family:'Poppins',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:22px}
+.cart-item{background:#fff;border-radius:14px;padding:16px;display:flex;align-items:center;gap:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+.cart-item-img{width:60px;height:60px;border-radius:10px;overflow:hidden;background:#f0e6d3;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{flex:1}
+.cart-item-name{font-weight:700;font-size:1.05rem}
+.cart-item-price{color:var(--primary);font-weight:700}
+.qty-controls{display:flex;align-items:center;gap:10px;margin-top:6px}
+.qty-btn{width:30px;height:30px;border-radius:8px;border:none;background:var(--bg);cursor:pointer;font-size:1.1rem;font-weight:700;transition:background .15s}
+.qty-btn:hover{background:var(--primary);color:#fff}
+.qty-val{font-weight:700;font-size:1.05rem;min-width:22px;text-align:center}
+.remove-btn{background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.3rem;padding:4px}
+.cart-summary{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-top:10px}
+.summary-row{display:flex;justify-content:space-between;padding:7px 0;font-size:1.02rem}
+.summary-row.total{font-weight:800;font-size:1.2rem;border-top:2px solid var(--bg);margin-top:8px;padding-top:12px}
+.checkout-btn{width:100%;padding:15px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;margin-top:16px;transition:background .2s}
+.checkout-btn:hover{background:var(--primary-dark)}
+.empty-cart{text-align:center;padding:60px 0;color:var(--text-light)}
+.empty-cart .icon{font-size:4rem;margin-bottom:16px}
+.order-container{max-width:600px;margin:0 auto;padding:28px 18px}
+.order-form{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.order-form h2{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-weight:600;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border-radius:10px;border:2px solid #e0e0e0;font-size:1rem;font-family:'Hind Siliguri',sans-serif;outline:none;transition:border .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.payment-opt{border:2px solid #e0e0e0;border-radius:10px;padding:12px;cursor:pointer;text-align:center;transition:all .15s;font-size:.95rem}
+.payment-opt.selected{border-color:var(--primary);background:#fff5ee}
+.pay-icon{font-size:1.8rem;display:block;margin-bottom:4px}
+.place-order-btn{width:100%;padding:15px;background:var(--success);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;margin-top:10px;transition:background .2s}
+.place-order-btn:hover{background:#16a34a}
+.success-page{text-align:center;padding:70px 20px}
+.success-page .icon{font-size:5rem;margin-bottom:20px}
+.success-page h2{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:800;color:var(--success)}
+.success-page p{color:var(--text-light);margin:12px 0 30px;font-size:1.05rem}
+.admin-container{max-width:1000px;margin:0 auto;padding:28px 18px}
+.admin-title{font-family:'Poppins',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:22px}
+.admin-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.admin-tab{padding:9px 20px;border-radius:10px;border:2px solid #e0e0e0;background:#fff;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-size:.97rem;transition:all .15s}
+.admin-tab.active{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+.stat-card{background:#fff;border-radius:14px;padding:20px;box-shadow:var(--shadow);text-align:center}
+.stat-card .num{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-card .label{color:var(--text-light);font-size:.9rem;margin-top:4px}
+.admin-table-wrap{background:#fff;border-radius:14px;box-shadow:var(--shadow);overflow:auto}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{background:var(--secondary);color:#fff;padding:13px 16px;text-align:left;font-size:.95rem}
+.admin-table td{padding:12px 16px;border-bottom:1px solid #f0f0f0;font-size:.97rem}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{background:#fff8f2}
+.status-badge{padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700}
+.status-pending{background:#fef9c3;color:#854d0e}
+.status-delivered{background:#dcfce7;color:#166534}
+.status-cancelled{background:#fee2e2;color:#991b1b}
+.admin-form{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.admin-form h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.img-preview{width:100%;height:150px;border-radius:10px;border:2px dashed #e0e0e0;display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;margin-top:8px;background:#f9f9f9}
+.img-preview img{width:100%;height:100%;object-fit:cover}
+.customize-section{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-bottom:20px}
+.customize-section h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:16px;color:var(--secondary);border-bottom:2px solid var(--bg);padding-bottom:10px}
+.color-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.color-row label{flex:1;font-weight:600;font-size:.95rem}
+.color-row input[type=color]{width:50px;height:36px;border:none;border-radius:8px;cursor:pointer}
+.save-btn{padding:12px 28px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;transition:background .2s}
+.save-btn:hover{background:var(--primary-dark)}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--secondary);color:#fff;padding:14px 22px;border-radius:12px;font-size:1rem;font-weight:600;z-index:9999;display:none;box-shadow:0 6px 24px rgba(0,0,0,.2)}
+@media(max-width:600px){.hero-content h1{font-size:1.7rem}.products-grid{grid-template-columns:repeat(2,1fr);gap:12px}.form-row{grid-template-columns:1fr}.payment-options{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <div class="nav-logo" id="navLogo">Foisal<span>Mart</span></div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('home')">🏠 হোম</button>
+    <button class="nav-btn" onclick="showPage('shop')">🛍️ শপ</button>
+    <button class="nav-btn" onclick="showPage('admin')">⚙️ অ্যাডমিন</button>
+  </div>
+  <button class="cart-btn" onclick="showPage('cart')">🛒 কার্ট <span class="cart-count" id="cartCount">0</span></button>
+</nav>
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 id="heroTitle">স্বাগতম <span>Foisal Mart</span> এ!</h1>
+      <p id="heroSubtitle">সেরা প্রোডাক্ট, সেরা দামে — দ্রুত ডেলিভারি নিশ্চিত ✅</p>
+      <button class="hero-btn" onclick="showPage('shop')">এখনই কিনুন →</button>
+    </div>
+  </div>
+  <div style="padding:30px 20px;max-width:1100px;margin:0 auto">
+    <h2 style="font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:20px">ফিচার্ড প্রোডাক্ট</h2>
+    <div class="products-grid" id="featured-grid"></div>
+  </div>
+</div>
+<div class="page" id="page-shop">
+  <div class="shop-controls">
+    <input class="search-box" type="text" placeholder="🔍 প্রোডাক্ট খুঁজুন..." id="searchInput" oninput="filterProducts()">
+    <button class="filter-btn active" onclick="setCategory('সব')">সব</button>
+    <button class="filter-btn" onclick="setCategory('ইলেকট্রনিক্স')">ইলেকট্রনিক্স</button>
+    <button class="filter-btn" onclick="setCategory('পোশাক')">পোশাক</button>
+    <button class="filter-btn" onclick="setCategory('খাবার')">খাবার</button>
+    <button class="filter-btn" onclick="setCategory('গৃহস্থালি')">গৃহস্থালি</button>
+    <button class="filter-btn" onclick="setCategory('অন্যান্য')">অন্যান্য</button>
+  </div>
+  <div class="products-grid" id="shop-grid"></div>
+</div>
+<div class="page" id="page-cart">
+  <div class="cart-container">
+    <div class="cart-title">🛒 আমার কার্ট</div>
+    <div id="cart-items"></div>
+    <div id="cart-summary"></div>
+  </div>
+</div>
+<div class="page" id="page-order">
+  <div class="order-container">
+    <div class="order-form">
+      <h2>📦 অর্ডার করুন</h2>
+      <div class="form-group"><label>আপনার নাম</label><input type="text" id="custName" placeholder="পুরো নাম"></div>
+      <div class="form-group"><label>মোবাইল নম্বর</label><input type="tel" id="custPhone" placeholder="01XXXXXXXXX"></div>
+      <div class="form-group"><label>ডেলিভারি ঠিকানা</label><textarea id="custAddress" rows="2" placeholder="বাড়ি/রোড/এলাকা/জেলা"></textarea></div>
+      <div class="form-group">
+        <label>পেমেন্ট পদ্ধতি</label>
+        <div class="payment-options">
+          <div class="payment-opt select
